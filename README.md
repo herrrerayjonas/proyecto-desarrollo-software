@@ -34,3 +34,12 @@ Aprender a crear y administrar repositorios, organizar archivos, documentar avan
 
 ## Conclusión
 GitHub permite organizar proyectos, controlar versiones y facilitar el trabajo colaborativo mediante repositorios en la nube.
+## Actualización del proyecto
+
+Se realizó una actualización de la documentación para registrar los avances del proyecto y mantener organizada la información.
+
+**Estado:** En desarrollo.
+
+**Última actividad:** Actualización del archivo README.md.
+
+**Seguimiento:** Se verifica el historial de cambios para garantizar la trazabilidad del proyecto.
