@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Área de un Rectángulo</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 320px;
+        }
+
+        input {
+            width: 80%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #resultado {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Área de un Rectángulo</h2>
+
+        <label for="baseInput">Base (b):</label><br>
+        <input type="number" id="baseInput" placeholder="Ingresa la base" step="any" min="0"><br>
+
+        <label for="alturaInput">Altura (h):</label><br>
+        <input type="number" id="alturaInput" placeholder="Ingresa la altura" step="any" min="0"><br>
+
+        <button onclick="calcularArea()">Calcular Área</button>
+
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function calcularArea() {
+
+            let base = parseFloat(document.getElementById("baseInput").value);
+            let altura = parseFloat(document.getElementById("alturaInput").value);
+            let resultadoTexto = document.getElementById("resultado");
+
+            if (isNaN(base) || isNaN(altura)) {
+                resultadoTexto.textContent = "Por favor, completa ambos campos.";
+                resultadoTexto.style.color = "orange";
+                return;
+            }
+
+            if (base <= 0 || altura <= 0) {
+                resultadoTexto.textContent = "La base y la altura deben ser mayores a 0.";
+                resultadoTexto.style.color = "red";
+                return;
+            }
+
+            let area = base * altura;
+
+            resultadoTexto.textContent = El área del rectángulo es: ${area};
+            resultadoTexto.style.color = "green";
+        }
+    </script>
+
+</body>
+</html>
