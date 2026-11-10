@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promedio de notas</title>
+
+    <style>
+        body {
+            font-family: "Century Gothic", sans-serif;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #8B27F5;
+            border-radius: 8px;
+        }
+        .campo {
+            margin-bottom: 12px;
+        }
+        label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #8B27F5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: blueviolet;
+        }
+        #resultado {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .aprobado {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .reprobado {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h2>Calculadora de promedio</h2>
+
+    <div class="campo">
+        <label for="nombre">Nombre del estudiante:</label>
+        <input type="text" id="nombre">
+    </div>
+
+    <div class="campo">
+        <label for="nota1">Nota 1</label>
+        <input type="number" id="nota1" step="0.1" placeholder="Ingrese la nota 1">
+    </div>
+
+    <div class="campo">
+        <label for="nota2">Nota 2</label>
+        <input type="number" id="nota2" step="0.1" placeholder="Ingrese la nota 2">
+    </div>
+
+    <div class="campo">
+        <label for="nota3">Nota 3</label>
+        <input type="number" id="nota3" step="0.1" placeholder="Ingrese la nota 3">
+    </div>
+
+    <button onclick="calcularpromedio()">Calcular promedio</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function calcularpromedio() {
+            // Obtener los valores de los input
+            const nombre = document.getElementById('nombre').value;
+            const nota1 = parseFloat(document.getElementById('nota1').value);
+            const nota2 = parseFloat(document.getElementById('nota2').value);
+            const nota3 = parseFloat(document.getElementById('nota3').value);
+            const divResultado = document.getElementById('resultado');
+
+            // Validar que se hayan ingresado todos los campos
+            if (
+                nombre.trim() === '' ||
+                isNaN(nota1) ||
+                isNaN(nota2) ||
+                isNaN(nota3)
+            ) {
+                alert('Por favor, complete todos los campos correctamente.');
+                return;
+            }
+
+            // Calcular el promedio
+            const promedio = (nota1 + nota2 + nota3) / 3;
+            const estado = promedio >= 3 ? 'APROBADO' : 'REPROBADO';
+            const claseColor = promedio >= 3 ? 'aprobado' : 'reprobado';
+
+
+            // Mostrar el resultado en pantalla
+            divResultado.className = claseColor;
+            divResultado.style.display = 'block';
+            divResultado.innerHTML = `
+                <p><strong>Estudiante:</strong> ${nombre}</p>
+                <p><strong>Promedio:</strong> ${promedio.toFixed(2)}</p>
+                <p><strong>Resultado:</strong> ${estado}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
